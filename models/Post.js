@@ -5,7 +5,10 @@ class Post extends Model {}
 
 Post.init({
   id:{
-      type:DataTypes.INTEGER
+      type:DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      unique: true,
   },
   picture:{
       type:DataTypes.STRING
