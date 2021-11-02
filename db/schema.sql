@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS in_touch_db;
+CREATE DATABASE in_touch_db;
