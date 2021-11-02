@@ -1,0 +1,10 @@
+<h1>Home page!</h1>
+
+{{#each post}}
+    <div class="card">
+        <h3>{{name}}</h3>
+        <h4>Owner: {{User.username}}</h4>
+        <img>{{picture}}</img>
+        <p>{{description}}</p>
+    </div>
+{{/each}}
