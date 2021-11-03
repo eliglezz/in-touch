@@ -24,6 +24,10 @@ Post.init({
   UserId:{
       type: DataTypes.INTEGER,
       allowNull:false
+  },
+  GroupId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
   }
 },{
     sequelize, 
