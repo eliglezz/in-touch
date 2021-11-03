@@ -39,8 +39,7 @@ router.post("/", (req, res) => {
     return res.status(401).send("log in first you knucklehead!");
   }
   Post.create({
-    id: req.body.id,
-    picture: req.body.pictures,
+    picture: req.body.picture,
     caption: req.body.caption,
     UserId: req.session.user.id,
   })
@@ -83,18 +82,48 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
-  try {
-    // Find post by id
-    let post = await Post.findById(req.params.id);
-    // Delete image from cloudinary
-    await cloudinary.uploader.destroy(post.cloudinary_id);
-    // Delete post from db
-    await post.remove();
-    res.json(post);
-  } catch (err) {
-    console.log(err);
+router.delete("/:id", (req, res) => {
+  if (!req.session.user) {
+    return res.status(403).json({ err: "login first" });
   }
+  Post.findByPk(req.params.id).then(foundPost => {
+    if (req.session.user.id !== foundPost.UserId) {
+      return res.status(403).json({ err: "not your Post!" });
+    }
+    Post.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(delPost => {
+        if (delPost) {
+          res.json(delPost);
+        } else {
+          res.status(404).json({ err: "no such post found!" });
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json({ err });
+      });
+  }).catch(err => {
+    console.log(err);
+    res.status(500).json({ err });
+  });;
 });
+
+// router.delete("/:id", async (req, res) => {
+//   try {
+//     // Find post by id
+//     let post = await Post.findById(req.params.id);
+//     // Delete image from cloudinary
+//     await cloudinary.uploader.destroy(post.cloudinary_id);
+//     // Delete post from db
+//     await post.remove();
+//     res.json(post);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
 
 module.exports = router;
