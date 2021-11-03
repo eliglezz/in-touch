@@ -42,6 +42,7 @@ router.post("/", (req, res) => {
     picture: req.body.picture,
     caption: req.body.caption,
     UserId: req.session.user.id,
+    GroupId: req.body.GroupId
   })
     .then((newPost) => {
       res.json(newPost);
