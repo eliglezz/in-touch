@@ -3,6 +3,7 @@ const sequelize = require("./config/connection.js")
 const session = require("express-session");
 const exphbs = require('express-handlebars');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const cloudinary = require("cloudinary");
 // Sets up the Express App
 // =============================================================
 const app = express();
@@ -10,8 +11,8 @@ const PORT = process.env.PORT || 3000;
 
 const hbs = exphbs.create({});
 
-// Requiring our models for syncing
-const {User,Pet,Group} = require('./models');
+// Requiring our models for syncing 
+const {User,Post,Group} = require('./models');
 const routes = require("./controllers");
 
 app.engine('handlebars', hbs.engine);
