@@ -22,7 +22,7 @@ Group.init({
             
         }
     },
-    user_id:{
+    User_id:{
         type:DataTypes.INTEGER,
         allowNull:false,
         validate:{

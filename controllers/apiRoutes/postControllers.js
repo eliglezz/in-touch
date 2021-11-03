@@ -80,7 +80,8 @@ router.get("/", async (req, res) => {
     res.json(post);
   } catch (err) {
     console.log(err);
-}});
+  }
+});
 
 router.delete("/:id", async (req, res) => {
   try {
@@ -93,6 +94,7 @@ router.delete("/:id", async (req, res) => {
     res.json(post);
   } catch (err) {
     console.log(err);
-  }});
+  }
+});
 
 module.exports = router;
