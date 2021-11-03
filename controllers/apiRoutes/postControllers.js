@@ -10,12 +10,27 @@ router.get("/", (req, res) => {
       if (dbPost.length) {
         res.json(dbPost);
       } else {
-        res.status(404).json({ message: "No pets found!" });
+        res.status(404).json({ message: "No posts found!" });
       }
     })
     .catch((err) => {
       console.log(err);
       res.status(500).json({ message: "an error occurred", err: err });
+    });
+});
+
+router.get("/:id", (req, res) => {
+  Post.findByPk(req.params.id)
+    .then(singlePost => {
+      if (singlePost) {
+        res.json(singlePost);
+      } else {
+        res.status(404).json({ err: "no such post found!" });
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ err });
     });
 });
 
@@ -25,12 +40,12 @@ router.post("/", (req, res) => {
   }
   Post.create({
     id: req.body.id,
-    pictures: req.body.pictures,
+    picture: req.body.pictures,
     caption: req.body.caption,
     UserId: req.session.user.id,
   })
-    .then((newPet) => {
-      res.json(newPet);
+    .then((newPost) => {
+      res.json(newPost);
     })
     .catch((err) => {
       console.log(err);
@@ -38,24 +53,26 @@ router.post("/", (req, res) => {
     });
 });
 
-router.post("/", upload.single("image"), async (req, res) => {
-  try {
-    // Upload image to cloudinary
-    const result = await cloudinary.uploader.upload(req.file.path);
-    // Create new post
-    let post = new Post({
-      id: req.body.id,
-      picture: result.secure_url,
-      cloudinary_id: result.public_id,
-      UserId: req.session.user.id,
-    });
-    // Save post
-    await post.save();
-    res.json(post);
-  } catch (err) {
-    console.log(err);
-  }
-});
+
+
+// router.post("/", upload.single("image"), async (req, res) => {
+//   try {
+//     // Upload image to cloudinary
+//     const result = await cloudinary.uploader.upload(req.file.path);
+//     // Create new post
+//     let post = new Post({
+//       id: req.body.id,
+//       picture: result.secure_url,
+//       cloudinary_id: result.public_id,
+//       UserId: req.session.user.id,
+//     });
+//     // Save post
+//     await post.save();
+//     res.json(post);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
 
 router.get("/", async (req, res) => {
   try {
