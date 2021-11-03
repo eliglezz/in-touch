@@ -50,6 +50,36 @@ router.post("/", (req, res) => {
     });
 });
 
+router.delete("/:id", (req, res) => {
+  if (!req.session.user) {
+    return res.status(403).json({ err: "login first" });
+  }
+  Group.findByPk(req.params.id).then(foundGroup => {
+    if (req.session.user.id !== foundGroup.UserId) {
+      return res.status(403).json({ err: "not your group!" });
+    }
+    Group.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(delGroup => {
+        if (delGroup) {
+          res.json(delGroup);
+        } else {
+          res.status(404).json({ err: "no such group found!" });
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json({ err });
+      });
+  }).catch(err => {
+    console.log(err);
+    res.status(500).json({ err });
+  });;
+});
+
 // router.delete("/:id", async (req, res) => {
 //   try {
 //     // Find post by id
