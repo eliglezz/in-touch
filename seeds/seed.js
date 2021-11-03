@@ -1,5 +1,5 @@
 const sequelize = require("../config/connection");
-const {User,Pet,Group} = require("../models")
+const {User,Group,Post} = require("../models")
 
 const seed = async ()=>{
     const userData = await User.bulkCreate([
@@ -26,44 +26,21 @@ const seed = async ()=>{
     ],{
         individualHooks:true
     })
-    const petsData = await Pet.bulkCreate([
+    const postData = await Post.bulkCreate([
         {
-            name:"Shiva",
-            species:"cat",
-            age:1,
+            picture: "http://placekitten.com/200/300",
+            caption: 'look at this cool kitten',
             UserId:1
         },
-        {
-            name:"Bahamut",
-            species:"cat",
-            age:1,
-            UserId:1
-        },
-        {
-            name:"Bandit",
-            species:"cat",
-            age:4,
-            UserId:2
-        },
+
     ])
     const groupsData = await Group.bulkCreate([
         {
-            name:"Multi-cat households",
-            description:"How to take care of more than 1 cat!",
-        },
-        {
-            name:"Pugs are the best!",
-            description:"I love their squishy faces!",
-        },
-        {
-            name:"Only Exotics!",
-            description:"no normal pets here, monkeys or weirder",
+            name:"Test Family",
+            UserId: 1
         },
         
     ])
-    groupsData[0].addUser(1)
-    groupsData[0].addUser(2)
-    userData[2].addGroups([2,3])
 }
 
 sequelize.sync({force:true}).then(()=>{
