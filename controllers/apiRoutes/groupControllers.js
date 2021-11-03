@@ -36,14 +36,13 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+  console.log(req.session);
   Group.create({
-    id: req.body.id,
-    // password:encryptedPassword,
     name: req.body.name,
-    User_id: req.session.User.id,
+    UserId: req.session.user.id,
   })
-    .then((newUser) => {
-      res.json(newUser);
+  .then((newGroup) => {
+    res.json(newGroup);
     })
     .catch((err) => {
       console.log(err);
@@ -51,18 +50,18 @@ router.post("/", (req, res) => {
     });
 });
 
-router.delete("/:id", async (req, res) => {
-  try {
-    // Find post by id
-    let group = await Group.findById(req.params.id);
-    // Delete image from cloudinary
-    await cloudinary.uploader.destroy(group.cloudinary_id);
-    // Delete group from db
-    await group.remove();
-    res.json(group);
-  } catch (err) {
-    console.log(err);
-  }
-});
+// router.delete("/:id", async (req, res) => {
+//   try {
+//     // Find post by id
+//     let group = await Group.findById(req.params.id);
+//     // Delete image from cloudinary
+//     await cloudinary.uploader.destroy(group.cloudinary_id);
+//     // Delete group from db
+//     await group.remove();
+//     res.json(group);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
 
 module.exports = router;
