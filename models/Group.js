@@ -9,12 +9,15 @@ Group.init({
     id: {
          type: DataTypes.INTEGER,
          unique:true,
+         allowNull:false,
+         primaryKey:true,
          validate:{
             
          }
     },
     name:{
         type:DataTypes.STRING,
+        unique:true,
         validate:{
             
         }

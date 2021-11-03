@@ -5,16 +5,28 @@ class Post extends Model {}
 
 Post.init({
   id:{
-      type:DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      unique: true,
   },
   picture:{
-      type:DataTypes.STRING
+      type: DataTypes.STRING
   },
-  description:{
-      type:DataTypes.STRING
+  caption:{
+      type: DataTypes.STRING,
+      validate:{
+        isAlphanumeric:true
+     }
   },
-  owner:{
-      type:DataTypes.STRING
+  cloudinary_id:{
+      type: DataTypes.INTEGER,
+      allowNull:false,
+      unique:true,
+  },
+  UserId:{
+      type: DataTypes.INTEGER,
+      allowNull:false
   }
 },{
     sequelize, 
