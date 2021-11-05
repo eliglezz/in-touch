@@ -12,7 +12,7 @@ User.belongsToMany(Group,{
     through:"UserGroup"
 })
 
-Group.belongsToMany(User,{
+Group.hasMany(User,{
     through:"UserGroup"
 })
 

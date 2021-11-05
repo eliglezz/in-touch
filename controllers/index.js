@@ -9,3 +9,6 @@ const sessionRoutes = require("./sessionsRoutes")
 router.use("/sessions",sessionRoutes)
 
 module.exports = router;
+
+
+
