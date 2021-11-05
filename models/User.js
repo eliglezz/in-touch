@@ -14,17 +14,27 @@ User.init({
          }
     },
     password:{
-        type:DataTypes.STRING,
+        type: DataTypes.STRING,
         validate:{
             len:[8]
         }
     },
     email:{
-        type:DataTypes.STRING,
+        type: DataTypes.STRING,
         unique:true,
         validate:{
             isEmail:true
         }
+    },
+    avatar:{
+        type: DataTypes.STRING,
+        unique:true,
+        allowNull:true,
+    },
+    cloudinary_id:{
+        type: DataTypes.STRING,
+        unique: true,
+        allowNull: true,
     }
 },{
     hooks:{

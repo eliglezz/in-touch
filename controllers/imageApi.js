@@ -24,3 +24,4 @@ const curl_command = 'curl -d "file=' + file + '&api_key=' + process.env.API_KEY
 
 console.log('curl command:', curl_command);
 
+cloudinary.uploader.upload("my_picture.jpg", function(error, result) { console.log(result) });

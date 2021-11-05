@@ -5,21 +5,14 @@ const bcrypt = require("bcrypt");
 class Group extends Model {}
 
 Group.init({
-    // add properites here, ex:
-    id: {
-         type: DataTypes.INTEGER,
-         unique:true,
-         validate:{
-            
-         }
-    },
     name:{
         type:DataTypes.STRING,
+        unique:true,
         validate:{
             
         }
     },
-    user_id:{
+    UserId:{
         type:DataTypes.INTEGER,
         allowNull:false,
         validate:{

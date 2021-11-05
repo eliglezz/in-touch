@@ -9,11 +9,18 @@ User.hasMany(Post,{
 Post.belongsTo(User);
 
 User.belongsToMany(Group,{
-    through:"UserGroup"
+    through:"UserId"
 })
 
+<<<<<<< HEAD
 Group.hasMany(User,{
     through:"UserGroup"
+=======
+Group.hasMany(Post)
+
+Group.belongsToMany(User,{
+    through:"GroupId"
+>>>>>>> dev
 })
 
 module.exports={
