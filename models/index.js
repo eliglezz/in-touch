@@ -12,15 +12,10 @@ User.belongsToMany(Group,{
     through:"UserId"
 })
 
-<<<<<<< HEAD
-Group.hasMany(User,{
-    through:"UserGroup"
-=======
 Group.hasMany(Post)
 
 Group.belongsToMany(User,{
     through:"GroupId"
->>>>>>> dev
 })
 
 module.exports={
