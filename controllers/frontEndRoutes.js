@@ -16,28 +16,35 @@ router.get("/post",(req,res)=>{
         include:[User]
     }).then(postData=>{
 
-        const hbsPets = postData.map(post=>post.get({plain:true}))
-        // res.json(hbsPets)
+        const hbsPosts = postData.map(post=>post.get({plain:true}))
         res.render("home",{
-            pets:hbsPets
+            posts: hbsPosts
         })
     })
 })
 
-router.get("/profile",(req,res)=>{
+router.get("/profile/:id",(req,res)=>{
     if(!req.session.user){
         return res.redirect("/login")
     }
-    User.findByPk(req.session.user.id,{
+    User.findByPk(req.params.id,{
         include:[Post]
     }).then(userData=>{
         const hbsUser = userData.get({plain:true});
+        console.log(hbsUser);
         res.render("profile",hbsUser)
     })
 })
 
 router.get("/login",(req,res)=>{
-    res.render("login")
+    if(req.session.user){
+        return res.redirect(`/profile/${req.session.user.id}`)
+    }
+   return  res.render("login")
+})
+
+router.get("/logout",(req,res)=>{
+    res.render('logout')
 })
 
 module.exports = router;
