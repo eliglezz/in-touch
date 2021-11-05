@@ -1,0 +1,43 @@
+{
+  "name": "tech-blog-mvc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "seed": "node seeds/seed.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eliglezz/tech-blog-mvc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eliglezz/tech-blog-mvc/issues"
+  },
+  "homepage": "https://github.com/eliglezz/tech-blog-mvc#readme",
+  "dependencies": {
+    "@cloudinary/url-gen": "^1.1.0",
+    "bcrypt": "^5.0.1",
+    "bulma": "^0.9.3",
+    "cloudinary": "^1.27.1",
+    "connect-session-sequelize": "^7.1.2",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "express-handlebars": "^5.3.4",
+    "express-session": "^1.17.2",
+    "formidable": "^2.0.1",
+    "http": "0.0.1-security",
+    "mysql2": "^2.3.2",
+    "nodemailer": "^6.7.0",
+    "nodemon": "^2.0.14",
+    "path": "^0.12.7",
+    "sequelize": "^6.8.0"
+  },
+  "devDependencies": {},
+  "keywords": []
+}
