@@ -31,6 +31,11 @@ const seed = async ()=>{
             picture: "http://placekitten.com/200/300",
             caption: 'look at this cool kitten',
             UserId:1
+        }, 
+        {
+            picture: "http://placekitten.com/200/300",
+            caption: 'look at this cool kitten',
+            UserId:2
         },
 
     ])
@@ -39,8 +44,15 @@ const seed = async ()=>{
             name:"Test Family",
             UserId: 1
         },
+        {
+            name:"Another Test Family",
+            UserId: 2
+        },
         
     ])
+    groupsData[0].addUser(1)
+    groupsData[0].addUser(2)
+    userData[2].addGroups([0,1])
 }
 
 sequelize.sync({force:true}).then(()=>{
