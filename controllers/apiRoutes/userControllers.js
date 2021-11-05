@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { User } = require("../../models");
 const bcrypt = require("bcrypt");
+const cloudinary = require("../../utils/cloudinary")
 
 router.get("/", (req, res) => {
   User.findAll()
@@ -56,6 +57,7 @@ router.post("/", (req, res) => {
       })
     });
 });
+
 router.post("/login", (req, res) => {
   User.findOne({
     where: {
@@ -120,6 +122,10 @@ router.put("/:id", (req, res) => {
       console.log(err);
       res.status(500).json({ err });
     });
+});
+
+router.put("/upload/:id", async (req, res) => {
+  
 });
 
 router.delete("/:id", (req, res) => {
