@@ -17,7 +17,7 @@ router.get("/post",(req,res)=>{
     }).then(postData=>{
 
         const hbsPosts = postData.map(post=>post.get({plain:true}))
-        res.render("home",{
+        res.render("post",{
             posts: hbsPosts
         })
     })

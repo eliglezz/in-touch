@@ -9,4 +9,4 @@ const myconfig = cloudinary.config({
   secure: true
 });
 
-exports.myconfig = myconfig;
+module.exports= myconfig;

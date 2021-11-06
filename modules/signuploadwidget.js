@@ -8,8 +8,8 @@ const signuploadwidget = () => {
 
   const signature = cloudinary.utils.api_sign_request({
     timestamp: timestamp,
-    source: 'uw',
-    folder: 'signed_upload_demo_uw'}, apiSecret);
+    source: 'user',
+    folder: 'signed_user_assets'}, apiSecret);
   
   return { timestamp, signature }
 }
