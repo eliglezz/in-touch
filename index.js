@@ -20,6 +20,8 @@ const routes = require("./controllers");
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+app.use('/api/signuploadwidget', signuploadwidgetRouter)
+app.use('/api/signuploadform', signuploadformRouter)
 app.use(express.static("public"));
 
 
