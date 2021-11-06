@@ -32,7 +32,7 @@ router.get("/profile/:id",(req,res)=>{
     }).then(userData=>{
         const hbsUser = userData.get({plain:true});
         console.log(hbsUser);
-        res.render("profile",hbs6User)
+        res.render("profile",hbsUser)
     })
 })
 
