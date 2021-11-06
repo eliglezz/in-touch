@@ -17,7 +17,7 @@ router.get("/post",(req,res)=>{
     }).then(postData=>{
 
         const hbsPosts = postData.map(post=>post.get({plain:true}))
-        res.render("home",{
+        res.render("post",{
             posts: hbsPosts
         })
     })
@@ -32,7 +32,7 @@ router.get("/profile/:id",(req,res)=>{
     }).then(userData=>{
         const hbsUser = userData.get({plain:true});
         console.log(hbsUser);
-        res.render("profile",hbsUser)
+        res.render("profile",hbs6User)
     })
 })
 

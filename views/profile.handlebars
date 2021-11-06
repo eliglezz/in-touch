@@ -1,8 +1,22 @@
-<h1>Welcome back, {{username}}</h1>
-{{#each Posts}}
-    <div class="card">
-        <h3>{{name}}</h3>
-        <img>{{picture}}</img>
-        <p>{{caption}}</p>
-    </div>
-{{/each}}
+<section class="hero has-background-link-dark is-fullheight">
+  <div class="hero-body">
+      <div class="container has-text-centered">
+          <h1 class="title">Welcome back, {{username}}</h1>
+          <div class="column is-4 is-offset-4">
+              <h3 class="title has-text-black">Post</h3>
+              <div class="box">
+                    {{#each Posts}}
+                        <div class="card">
+                         
+                            <img>{{picture}}</img>
+                            <p>{{caption}}</p>
+                        </div>
+                    {{/each}}
+              </div>
+              <p class="has-text-grey">
+              </p>
+          </div>
+      </div>
+  </div>
+</section>
+<script src="/js/profile.js"></script>
