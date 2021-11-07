@@ -21,7 +21,7 @@
 // module.exports = router
 var generateSignature = function(callback, params_to_sign){
   $.ajax({
-   url     : “https://www.my-domain.com/my_generate_signature",
+   url     : "https://api.cloudinary.com/v1_1/intouchimages/image/upload",
    type    : "GET",
    dataType: "text",
    data    : { data: params_to_sign},
