@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       console.log(result)
       
       var str = JSON.stringify(result, null, 4);
-      document.getElementById("uwdata").innerHTML += str;
+      document.getElementById("upload-pic").innerHTML += str;
     }
   }
 

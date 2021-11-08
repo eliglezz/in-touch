@@ -1,8 +1,20 @@
-<h1>Welcome back, {{username}}</h1>
-{{#each Post}}
-    <div class="card">
-        <h3>{{name}}</h3>
-        <img>{{picture}}</img>
-        <p>{{caption}}</p>
-    </div>
-{{/each}}
+<section class="hero has-background-link-dark is-fullheight">
+  <div class="hero-body">
+      <div class="container has-text-centered">
+          <div class="box">
+            <h1 class="title">Welcome back, {{username}}</h1>
+            <img class="user-profile" src="https://res.cloudinary.com/intouchimages/image/upload/c_thumb,w_200,g_face/v1635798430/samples/bike.jpg" alt="">
+          </div>
+          <div class="column is-4 is-offset-4">
+              <h3 class="title has-text-black">Posts</h3>
+              <div class="box">
+                <img src="https://res.cloudinary.com/intouchimages/image/upload/v1635798430/samples/bike.jpg    " alt="">
+                <h2>Got a new bike!🚲</h2>
+              </div>
+              <p class="has-text-grey">
+              </p>
+          </div>
+      </div>
+  </div>
+</section>
+<script src="/js/profile.js"></script>
